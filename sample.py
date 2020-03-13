@@ -88,8 +88,7 @@ def run(config):
     print('Accumulating standing stats across %d accumulations...' % config['num_standing_accumulations'])
     utils.accumulate_standing_stats(G, z_, y_, config['n_classes'],
                                     config['num_standing_accumulations'])
-    
-  
+
   # Sample a number of images and save them to an NPZ, for use with TF-Inception
   if config['sample_npz']:
     # Lists to hold images and labels for images
@@ -117,6 +116,7 @@ def run(config):
                          experiment_name=experiment_name,
                          folder_number=config['sample_sheet_folder_num'],
                          z_=z_,)
+  
   # Sample interp sheets
   if config['sample_interps']:
     print('Preparing interp sheets...')
@@ -129,6 +129,7 @@ def run(config):
                          folder_number=config['sample_sheet_folder_num'], 
                          sheet_number=0,
                          fix_z=fix_z, fix_y=fix_y, device='cuda')
+  
   # Sample random sheet
   if config['sample_random']:
     print('Preparing random sample sheet...')
@@ -140,6 +141,7 @@ def run(config):
 
   # Get Inception Score and FID
   get_inception_metrics = inception_utils.prepare_inception_metrics(config['dataset'], config['parallel'], config['no_fid'])
+  
   # Prepare a simple function get metrics that we use for trunc curves
   def get_metrics():
     sample = functools.partial(utils.sample, G=G, z_=z_, y_=y_, config=config)    
@@ -171,6 +173,7 @@ def run(config):
         utils.accumulate_standing_stats(G, z_, y_, config['n_classes'],
                                     config['num_standing_accumulations'])
       get_metrics()
+
 def main():
   # parse command line and run    
   parser = utils.prepare_parser()
