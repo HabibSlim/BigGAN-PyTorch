@@ -1,0 +1,3 @@
+/home/mrim/quenot/anaconda3/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+## OAR [2020-03-15 07:13:59] Job 18870 KILLED ##

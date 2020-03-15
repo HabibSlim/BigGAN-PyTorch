@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH="/home/mrim/quenot/anaconda3/bin:$PATH"
 CUDA_VISIBLE_DEVICES=0,1 python train.py \
 --shuffle --batch_size 50 --parallel \
 --num_G_accumulations 1 --num_D_accumulations 1 --num_epochs 1000 \
